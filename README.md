@@ -1,19 +1,21 @@
 # turtlebot2_ros2
-This project contains a minimal example for setting up ROS 2 Humble on the Kobuki [TurtleBot 2 platform](https://www.turtlebot.com/). Teleoperation using the keyboard and a joystick controller is demonstrated. 
+This project contains a minimal example for setting up ROS 2 Kilted on the Kobuki [TurtleBot 2 platform](https://www.turtlebot.com/). Teleoperation using the keyboard and a joystick controller is demonstrated. 
 For a comprehensive guide, see [idorobotics.com](https://idorobotics.com/2024/02/20/ros2-on-kobuki-turtlebot/).
 ## Setup
 To setup the TurtleBot 2 mobile robot base:
 - Install the velocity smoother and sophus packages:
 ```bash
-sudo apt-get install ros-humble-kobuki-velocity-smoother ros-humble-sophus
+sudo apt-get install ros-kilted-kobuki-velocity-smoother ros-kilted-sophus ros-kilted-kobuki-ros-interfaces
 ```
-- In a ROS 2 workspace, clone this repository (which adds the kobuki_core, kobuki_ros, kobuki_ros_interfaces, cmd_vel_mux, ecl_core and ecl_lite packages):
+- In a ROS 2 workspace, clone this repository (which adds the kobuki_core, kobuki_ros, cmd_vel_mux, ecl_core and ecl_lite packages):
 ```bash
 git clone https://github.com/djoka-technologies/turtlebot2_ros2.git
+cd turtlebot2_ros2
+git submodule update --init --recursive
 ```
 - Install any missing depencies:
 ```bash
-rosdep install -i --from-path src --rosdistro humble -y
+rosdep install -i --from-path src --rosdistro kilted -y
 ```
 - Build the workspace
 ```bash
@@ -24,7 +26,7 @@ colcon build --symlink-install --executor sequential
  To test this setup, run remote teleoperation to control (drive around) the robot from a workstation (laptop) computer following the steps below:
  - Install the teleop packages:
  ```bash
-sudo apt-get install ros-humble-teleop-twist-keyboard ros-humble-joy-teleop ros-humble-teleop-twist-joy
+sudo apt-get install ros-kilted-teleop-twist-keyboard ros-kilted-joy-teleop ros-kilted-teleop-twist-joy
 ```
  - Open an ssh connection to the robot then start the robot:
  ```bash
